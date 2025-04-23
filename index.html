@@ -121,9 +121,26 @@
             <i class="fas fa-phone-alt mr-2"></i>
             <span>+225 01 23 45 67 89</span>
           </a>
-          <button class="md:hidden text-dark">
+          <button id="mobile-menu-button" class="md:hidden text-dark">
             <i class="fas fa-bars text-2xl"></i>
           </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="md:hidden bg-white shadow-md overflow-hidden transition-all duration-300 max-h-0">
+        <div class="container mx-auto px-4 py-2">
+          <div class="flex flex-col space-y-3">
+            <a href="#home" class="py-2 text-dark font-medium border-b border-gray-100">Accueil</a>
+            <a href="#vehicles" class="py-2 text-dark font-medium border-b border-gray-100">Nos Véhicules</a>
+            <a href="#services" class="py-2 text-dark font-medium border-b border-gray-100">Services</a>
+            <a href="#testimonials" class="py-2 text-dark font-medium border-b border-gray-100">Témoignages</a>
+            <a href="#contact" class="py-2 text-dark font-medium">Contact</a>
+            <a href="tel:+2250123456789" class="py-2 text-dark font-medium flex items-center">
+              <i class="fas fa-phone-alt mr-2 text-primary"></i>
+              <span>+225 01 23 45 67 89</span>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -937,15 +954,37 @@
             link.classList.remove('active-nav')
           })
           this.classList.add('active-nav')
+          
+          // Close mobile menu if it's open
+          if (window.innerWidth < 768) {
+            mobileMenu.style.maxHeight = "0";
+            menuOpen = false;
+          }
         })
       })
 
-      // Mobile menu toggle (placeholder - would need more implementation)
-      document
-        .querySelector('.md\\:hidden button')
-        .addEventListener('click', function () {
-          alert("Le menu mobile s'ouvrirait ici")
-        })
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button')
+      const mobileMenu = document.getElementById('mobile-menu')
+      let menuOpen = false
+      
+      mobileMenuButton.addEventListener('click', function() {
+        if (menuOpen) {
+          mobileMenu.style.maxHeight = "0";
+          menuOpen = false;
+        } else {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+          menuOpen = true;
+        }
+      });
+      
+      // Adjust menu on window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+          mobileMenu.style.maxHeight = "0";
+          menuOpen = false;
+        }
+      });
     </script>
   </body>
 </html>
