@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RentyxCar - Location de Voitures Premium à Abidjan</title>
-
+    <title>RentyxCar - Location de voitures en Côte d'Ivoire</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#065f46',
-              secondary: '#047857',
-              accent: '#f59e0b',
-              dark: '#064e3b',
-              light: '#d1fae5',
+              primary: '#e74c3c',
+              secondary: '#2c3e50',
+              accent: '#f5f0e6',
+              light: '#f8f9fa',
+              dark: '#2c3e50',
+              neutral: '#6c757d',
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              heading: ['Montserrat', 'sans-serif'],
             },
           },
         },
@@ -26,1078 +29,1285 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: 'Poppins', sans-serif;
-        scroll-behavior: smooth;
-        overflow-x: hidden; /* Empêcher le défilement horizontal */
-        width: 100%;
-        max-width: 100vw;
-        position: relative;
+        background-color: #f8f9fa;
+        color: #2c3e50;
       }
-      html {
-        overflow-x: hidden;
-        max-width: 100vw;
-      }
-      .hero-gradient {
-        background: linear-gradient(
-          135deg,
-          rgba(6, 95, 70, 0.9) 0%,
-          rgba(4, 120, 87, 0.9) 100%
-        );
-      }
-      .car-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-      .testimonial-card {
-        transition: all 0.3s ease;
-      }
-      .testimonial-card:hover {
-        transform: scale(1.02);
-      }
-      .language-selector {
-        transition: all 0.3s ease;
-      }
-      .language-selector:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
-      .booking-form {
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      .heading {
+        font-family: 'Montserrat', sans-serif;
       }
       .nav-link {
         position: relative;
+        transition: all 0.3s ease;
       }
       .nav-link::after {
         content: '';
         position: absolute;
         width: 0;
         height: 2px;
-        bottom: -2px;
+        bottom: -4px;
         left: 0;
-        background-color: var(--accent);
+        background-color: #e74c3c;
         transition: width 0.3s ease;
       }
-      .nav-link:hover::after {
-        width: 100%;
-      }
+      .nav-link:hover::after,
       .active-nav::after {
         width: 100%;
       }
-      /* Reset CSS pour Botpress */
-      #bp-web-widget-container,
-      #bp-web-widget,
-      iframe[id^="bp-widget-web"] {
-        position: fixed !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: auto !important;
-        max-width: 100% !important;
-        height: auto !important;
-        max-height: 100% !important;
-        z-index: 9999 !important;
-        border: none !important;
-        overflow: visible !important;
-        transform: none !important;
-        transition: none !important;
+      .car-card {
+        transition: all 0.3s ease;
       }
-      /* Assurez-vous que tous les conteneurs ont une largeur maximale de 100% */
-      .container {
-        max-width: 100vw;
-        overflow-x: hidden;
-      }
-      /* Correction pour le widget Botpress */
-      #bp-web-widget-container {
-        position: fixed !important;
-        right: 20px !important;
-        bottom: 20px !important;
-        left: auto !important;
-        top: auto !important;
-        width: auto !important;
-        transform: none !important;
-        z-index: 9999 !important;
+      .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
-
-
-  <body class="bg-gray-50 max-w-full">
-    <!-- BOTPRESS -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+  <body>
+      <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/04/22/09/20250422094150-ENEN038B.js"></script>
-    <script>
-        window.botpressWebChat.init({
-            "botId": "2025/04/22/09/20250422094150-ENEN038B",
-            "clientId": "2025/04/22/09/20250422094150-ENEN038B",
-            "hostUrl": "https://cdn.botpress.cloud/webchat/v2.3",
-            "messagingUrl": "https://messaging.botpress.cloud",
-            "botName": "Assistant RentyxCar",
-            "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/761bca07-df6e-44ea-87b7-10ad655b7b49/v13/style.css",
-            "useSessionStorage": true,
-            "enableConversationDeletion": true,
-            "showConversationButton": false,
-            "disableAnimations": false,
-            "closeOnEscape": false,
-            "showTimestamp": true,
-            "enableTranscriptDownload": false,
-            "enableConversationReset": false,
-            "composerPlaceholder": "Posez-nous une question...",
-            "botConversationDescription": "Assistant location de voitures",
-            "containerWidth": "360px",
-            "layoutWidth": "360px",
-            "hideWidget": false,
-            "disableNotificationSound": false,
-            "enableSmartScroll": true,
-            "enableVoiceInput": false,
-            "enableArrowNavigation": false,
-            "avatarUrl": "",
-            "className": "custom-botpress-widget",
-            "phoneNumber": "+2250123456789",
-            "emailAddress": "contact@rentyxcar.com",
-            "website": "http://rentyxcar.com",
-            "themeColor": "#065f46"
-        });
 
-        // Corriger la position du widget Botpress après chargement
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var widget = document.querySelector('#bp-web-widget-container');
-                if (widget) {
-                    widget.style.position = 'fixed';
-                    widget.style.right = '20px';
-                    widget.style.bottom = '20px';
-                    widget.style.left = 'auto';
-                    widget.style.top = 'auto';
-                    widget.style.width = 'auto';
-                    widget.style.transform = 'none';
-                    widget.style.zIndex = '9999';
-                }
-            }, 1000);
-        });
-    </script>
-
-    <!-- Navigation -->    
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-      <div
-        class="container mx-auto px-4 py-3 md:py-6 flex justify-between items-center"
-      >
-        <div class="flex items-center">
-          <span class="text-xl font-bold text-dark"
-            >Rentyx<span class="text-accent">Car</span></span
-          >
-        </div>
-
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="nav-link active-nav text-dark font-medium"
-            >Accueil</a
-          >
-          <a href="#vehicles" class="nav-link text-dark font-medium"
-            >Nos Véhicules</a
-          >
-          <a href="#services" class="nav-link text-dark font-medium"
-            >Services</a
-          >
-          <a href="#testimonials" class="nav-link text-dark font-medium"
-            >Témoignages</a
-          >
-          <a href="#contact" class="nav-link text-dark font-medium">Contact</a>
-        </div>
-
-        <div class="flex items-center space-x-4">
-          <a
-            href="tel:+2250123456789"
-            class="hidden md:flex items-center text-dark"
-          >
-            <i class="fas fa-phone-alt mr-2"></i>
-            <span>+225 01 23 45 67 89</span>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <a href="#home" class="flex items-center">
+            <span class="text-2xl font-semibold text-secondary"
+              >Rentyx<span class="text-primary">Car</span></span
+            >
           </a>
-          <button id="mobile-menu-button" class="md:hidden text-dark">
-            <i class="fas fa-bars text-2xl"></i>
-          </button>
-        </div>
-      </div>
 
-      <!-- Mobile Menu Dropdown -->
-      <div
-        id="mobile-menu"
-        class="md:hidden bg-white shadow-md overflow-hidden transition-all duration-300 max-h-0"
-      >
-        <div class="container mx-auto px-4 py-2">
-          <div class="flex flex-col space-y-3">
+          <nav class="hidden md:flex space-x-8">
             <a
               href="#home"
-              class="py-2 text-dark font-medium border-b border-gray-100"
+              class="nav-link active-nav text-dark hover:text-primary transition-all duration-300"
               >Accueil</a
             >
             <a
               href="#vehicles"
-              class="py-2 text-dark font-medium border-b border-gray-100"
-              >Nos Véhicules</a
+              class="nav-link text-dark hover:text-primary transition-all duration-300"
+              >Nos véhicules</a
             >
             <a
               href="#services"
-              class="py-2 text-dark font-medium border-b border-gray-100"
+              class="nav-link text-dark hover:text-primary transition-all duration-300"
               >Services</a
             >
             <a
-              href="#testimonials"
-              class="py-2 text-dark font-medium border-b border-gray-100"
-              >Témoignages</a
+              href="#about"
+              class="nav-link text-dark hover:text-primary transition-all duration-300"
+              >À Propos</a
             >
-            <a href="#contact" class="py-2 text-dark font-medium">Contact</a>
             <a
-              href="tel:+2250123456789"
-              class="py-2 text-dark font-medium flex items-center"
+              href="#contact"
+              class="nav-link text-dark hover:text-primary transition-all duration-300"
+              >Contact</a
+            >
+          </nav>
+
+          <div class="flex items-center space-x-6">
+            <a
+              href="tel:+22507000000"
+              class="hidden md:flex items-center text-dark hover:text-primary transition-all duration-300"
             >
               <i class="fas fa-phone-alt mr-2 text-primary"></i>
-              <span>+225 01 23 45 67 89</span>
+              <span>+225 07 00 00 00</span>
             </a>
+            <a
+              href="#contact"
+              class="bg-primary text-white px-5 py-2 rounded-md hover:bg-red-700 transition-all duration-300 hidden md:block"
+            >
+              Réserver
+            </a>
+            <button id="mobileMenuBtn" class="md:hidden text-primary">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
           </div>
         </div>
       </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="home" class="hero-gradient text-white py-20 md:py-32">
-      <div
-        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
-      >
-        <div class="md:w-1/2 mb-10 md:mb-0">
-          <h1 class="text-4xl md:text-5xl font-bold mb-6">
-            Location de Voitures Premium à
-            <span class="text-accent">Abidjan</span>
-          </h1>
-          <p class="text-lg mb-8 opacity-90">
-            Découvrez la liberté de la route avec notre flotte de luxe. Prix
-            compétitifs, service exceptionnel et le véhicule parfait pour chaque
-            occasion.
-          </p>
-          <div
-            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
-          >
+      
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden bg-white w-full hidden">
+        <div class="container mx-auto px-4 py-4">
+          <nav class="flex flex-col space-y-4 pb-5">
+            <a
+              href="#home"
+              class="text-dark hover:text-primary transition-all duration-300 border-b border-gray-100 pb-2"
+              >Accueil</a
+            >
             <a
               href="#vehicles"
-              class="bg-accent hover:bg-yellow-600 text-dark font-bold py-3 px-6 rounded-full transition duration-300 text-center"
+              class="text-dark hover:text-primary transition-all duration-300 border-b border-gray-100 pb-2"
+              >Nos véhicules</a
             >
-              Explorer la Flotte
+            <a
+              href="#services"
+              class="text-dark hover:text-primary transition-all duration-300 border-b border-gray-100 pb-2"
+              >Services</a
+            >
+            <a
+              href="#about"
+              class="text-dark hover:text-primary transition-all duration-300 border-b border-gray-100 pb-2"
+              >À Propos</a
+            >
+            <a
+              href="#contact"
+              class="text-dark hover:text-primary transition-all duration-300 pb-2"
+              >Contact</a
+            >
+          </nav>
+          <div class="flex flex-col space-y-4 pt-2 border-t border-gray-100">
+            <a
+              href="tel:+22507000000"
+              class="flex items-center text-dark hover:text-primary transition-all duration-300"
+            >
+              <i class="fas fa-phone-alt mr-2 text-primary"></i>
+              <span>+225 07 00 00 00</span>
             </a>
             <a
-              href="#booking"
-              class="bg-transparent hover:bg-dark border-2 border-white text-white font-bold py-3 px-6 rounded-full transition duration-300 text-center"
+              href="#contact"
+              class="bg-primary text-white px-5 py-2 rounded-md hover:bg-red-700 transition-all duration-300 w-full text-center"
             >
-              Réserver Maintenant
+              Réserver
             </a>
           </div>
         </div>
-        <div class="md:w-1/2 flex justify-center">
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section id="home" class="relative min-h-screen">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
           <img
-            src="images\hero.png"
-            alt="Voiture de Luxe"
-            class="rounded-lg shadow-xl w-full max-w-md object-cover h-80"
+            src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="Voiture de luxe en Côte d'Ivoire"
+            class="w-full h-full object-cover"
           />
-        </div>
-      </div>
-    </section>
-
-    <!-- Booking Form -->
-    <section id="booking" class="py-12 bg-white">
-      <div class="container mx-auto px-4">
-        <div
-          class="booking-form bg-white rounded-xl p-6 -mt-16 max-w-5xl mx-auto border border-gray-200"
-        >
-          <h2 class="text-2xl font-bold text-dark mb-6">
-            Réservez Votre Véhicule Idéal
-          </h2>
-          <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div>
-              <label class="block text-gray-700 mb-2"
-                >Lieu de Prise en Charge</label
-              >
-              <select
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-              >
-                <option>Aéroport d'Abidjan</option>
-                <option>Plateau</option>
-                <option>Cocody</option>
-                <option>Marcory</option>
-                <option>Yopougon</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2"
-                >Date de Prise en Charge</label
-              >
-              <input
-                type="date"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-              />
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2">Date de Retour</label>
-              <input
-                type="date"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-              />
-            </div>
-            <div class="flex items-end">
-              <button
-                class="w-full bg-primary hover:bg-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-              >
-                Rechercher des Véhicules
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vehicle Fleet -->
-    <section id="vehicles" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-dark mb-4">
-            Notre Flotte de Véhicules
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Choisissez parmi notre large sélection de véhicules premium adaptés
-            à vos besoins et à votre budget.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Car 1 -->
           <div
-            class="car-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                alt="Toyota Corolla"
-                class="w-full h-48 object-cover"
-              />
+            class="absolute inset-0 bg-gradient-to-r from-dark/80 to-dark/40"
+          ></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center">
+          <div class="container mx-auto px-4 pt-20 pb-36 md:py-32">
+            <div class="max-w-3xl">
+              <span
+                class="inline-block bg-primary/90 text-white px-4 py-1 rounded-md text-sm font-medium mb-6"
+                >Location de voitures en Côte d'Ivoire</span
+              >
+              <h1
+                class="heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+              >
+                La liberté de conduire partout en Côte d'Ivoire
+              </h1>
+              <p class="text-lg text-white/90 mb-10 max-w-2xl">
+                RentyxCar propose une gamme complète de véhicules de qualité pour tous vos 
+                déplacements professionnels ou touristiques à Abidjan et dans les grandes villes ivoiriennes.
+              </p>
               <div
-                class="absolute top-2 right-2 bg-accent text-dark font-bold px-3 py-1 rounded-full text-xs"
+                class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-16 md:mb-0"
               >
-                Populaire
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-bold text-dark">Toyota Corolla</h3>
-                <span class="text-primary font-bold">65€/jour</span>
-              </div>
-              <div class="flex items-center text-gray-500 mb-4">
-                <i class="fas fa-car mr-2"></i>
-                <span class="text-sm">2022 | Automatique | 4 Places</span>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Climatisation</span
+                <a
+                  href="#vehicles"
+                  class="bg-primary hover:bg-red-700 text-white font-medium py-3.5 px-8 rounded-md transition-all duration-300 text-center flex items-center justify-center"
                 >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Bluetooth</span
+                  <span>Découvrir nos véhicules</span>
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a
+                  href="#contact"
+                  class="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/30 text-white font-medium py-3.5 px-8 rounded-md transition-all duration-300 text-center"
                 >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >GPS</span
-                >
+                  Nous contacter
+                </a>
               </div>
-              <button
-                class="w-full bg-primary hover:bg-dark text-white font-bold py-2 px-4 rounded-lg transition duration-300"
-              >
-                Réserver
-              </button>
-            </div>
-          </div>
-
-          <!-- Car 2 -->
-          <div
-            class="car-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                alt="Mercedes E-Class"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-bold text-dark">Mercedes Classe E</h3>
-                <span class="text-primary font-bold">120€/jour</span>
-              </div>
-              <div class="flex items-center text-gray-500 mb-4">
-                <i class="fas fa-car mr-2"></i>
-                <span class="text-sm">2021 | Automatique | 5 Places</span>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Son Premium</span
-                >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Sièges en Cuir</span
-                >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Toit Panoramique</span
-                >
-              </div>
-              <button
-                class="w-full bg-primary hover:bg-dark text-white font-bold py-2 px-4 rounded-lg transition duration-300"
-              >
-                Réserver
-              </button>
-            </div>
-          </div>
-
-          <!-- Car 3 -->
-          <div
-            class="car-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300"
-          >
-            <div class="relative">
-              <img
-                src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                alt="Toyota RAV4"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="text-xl font-bold text-dark">Toyota RAV4</h3>
-                <span class="text-primary font-bold">85€/jour</span>
-              </div>
-              <div class="flex items-center text-gray-500 mb-4">
-                <i class="fas fa-car mr-2"></i>
-                <span class="text-sm">2023 | Automatique | 5 Places</span>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >4x4</span
-                >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Spacieux</span
-                >
-                <span
-                  class="bg-gray-100 px-2 py-1 rounded text-xs text-gray-700"
-                  >Caméra de Recul</span
-                >
-              </div>
-              <button
-                class="w-full bg-primary hover:bg-dark text-white font-bold py-2 px-4 rounded-lg transition duration-300"
-              >
-                Réserver
-              </button>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="text-center mt-10">
-          <button
-            class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-6 border border-primary rounded-lg transition duration-300"
-          >
-            Voir Tous les Véhicules
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section id="services" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-dark mb-4">
-            Pourquoi Choisir RentyxCar
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Nous faisons tout notre possible pour que votre expérience de
-            location soit exceptionnelle.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Overlay Stats/Benefits Bar -->
+      <section class="bg-primary/90 py-6 md:py-0 md:relative md:-mt-24 z-20">
+        <div class="container mx-auto">
           <div
-            class="text-center p-6 rounded-xl bg-gray-50 hover:bg-light transition duration-300"
-          >
-            <div
-              class="bg-primary bg-opacity-10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
+              class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20"
             >
-              <i class="fas fa-shield-alt text-primary text-2xl"></i>
+              <div class="p-6 md:p-8 flex items-center space-x-4">
+                <div
+                  class="bg-primary/20 rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  <i class="fas fa-car text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-white text-lg">
+                    +50 Véhicules Disponibles
+                  </h3>
+                  <p class="text-sm text-white/70">
+                    Des citadines aux 4x4 tout-terrain
+                  </p>
+                </div>
+              </div>
+              <div class="p-6 md:p-8 flex items-center space-x-4">
+                <div
+                  class="bg-primary/20 rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-white text-lg">
+                    5 Agences en Côte d'Ivoire
+                  </h3>
+                  <p class="text-sm text-white/70">
+                    Abidjan, Yamoussoukro, Bouaké, San Pédro, Korhogo
+                  </p>
+                </div>
+              </div>
+              <div class="p-6 md:p-8 flex items-center space-x-4">
+                <div
+                  class="bg-primary/20 rounded-full w-12 h-12 flex items-center justify-center"
+                >
+                  <i class="fas fa-headset text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-white text-lg">
+                    Service 24/7
+                  </h3>
+                  <p class="text-sm text-white/70">
+                    Assistance routière et support client
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-dark mb-2">Assurance Complète</h3>
-            <p class="text-gray-600">
-              Une couverture complète pour votre tranquillité d'esprit pendant
-              votre période de location.
+        </div>
+      </section>
+      
+      <!-- Vehicles Section -->
+      <section id="vehicles" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+          <div class="text-center mb-16">
+            <span
+              class="text-primary font-medium text-sm uppercase tracking-wider"
+              >Notre flotte</span
+            >
+            <h2
+              class="heading text-3xl lg:text-4xl font-bold text-secondary mt-2 mb-6"
+            >
+              Des Véhicules pour Tous vos Besoins
+            </h2>
+            <div class="w-20 h-1 bg-primary mx-auto mb-5"></div>
+            <p class="text-neutral max-w-3xl mx-auto">
+              RentyxCar propose une large gamme de véhicules que vous pouvez louer selon 
+              vos besoins, que ce soit pour un jour, une semaine ou un mois entier.
             </p>
           </div>
 
-          <div
-            class="text-center p-6 rounded-xl bg-gray-50 hover:bg-light transition duration-300"
-          >
-            <div
-              class="bg-primary bg-opacity-10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-            >
-              <i class="fas fa-clock text-primary text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold text-dark mb-2">Assistance 24/7</h3>
-            <p class="text-gray-600">
-              Notre équipe est toujours disponible pour vous aider avec
-              n'importe quelle question ou problème.
-            </p>
-          </div>
-
-          <div
-            class="text-center p-6 rounded-xl bg-gray-50 hover:bg-light transition duration-300"
-          >
-            <div
-              class="bg-primary bg-opacity-10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-            >
-              <i class="fas fa-car text-primary text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold text-dark mb-2">Flotte Récente</h3>
-            <p class="text-gray-600">
-              Véhicules bien entretenus, modèles récents avec les dernières
-              fonctionnalités.
-            </p>
-          </div>
-
-          <div
-            class="text-center p-6 rounded-xl bg-gray-50 hover:bg-light transition duration-300"
-          >
-            <div
-              class="bg-primary bg-opacity-10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-            >
-              <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-bold text-dark mb-2">
-              Plusieurs Emplacements
-            </h3>
-            <p class="text-gray-600">
-              Points de prise en charge et de restitution pratiques dans tout
-              Abidjan.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-dark mb-4">
-            Ce Que Disent Nos Clients
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Ne vous fiez pas seulement à nos paroles - écoutez nos clients
-            satisfaits.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="testimonial-card bg-white p-6 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Vehicle 1: SUV -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 car-card">
+              <div class="relative h-56 overflow-hidden">
                 <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  alt="Client"
-                  class="w-full h-full object-cover"
+                  src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  alt="SUV Toyota Land Cruiser"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+                <div class="absolute top-4 right-4 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  Premium
+                </div>
               </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="heading text-xl font-bold text-secondary">
+                    Toyota Land Cruiser
+                  </h3>
+                  <div class="text-primary font-semibold">
+                    60.000 <span class="text-neutral text-sm font-normal">FCFA/jour</span>
+                  </div>
+                </div>
+                <p class="text-sm text-neutral mb-4">SUV Premium • 7 places</p>
+                
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-gas-pump text-primary mr-2"></i>
+                    <span>Diesel</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-cog text-primary mr-2"></i>
+                    <span>Automatique</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-snowflake text-primary mr-2"></i>
+                    <span>Climatisation</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-suitcase text-primary mr-2"></i>
+                    <span>5 valises</span>
+                  </div>
+                </div>
+                
+                <div class="flex space-x-2 mb-6">
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">4x4</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">Bluetooth</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">GPS</span>
+                </div>
+                
+                <div class="flex space-x-2">
+                  <a
+                    href="#contact"
+                    class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-all duration-300 text-center flex-1"
+                  >
+                    Réserver
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-gray-200 text-secondary font-medium py-2 px-4 rounded-md transition-all duration-300 text-center"
+                  >
+                    Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle 2: Berline -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 car-card">
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1590362891991-f776e747a588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                  alt="Berline Toyota Camry"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+                <div class="absolute top-4 right-4 bg-secondary text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  Business
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="heading text-xl font-bold text-secondary">
+                    Toyota Camry
+                  </h3>
+                  <div class="text-primary font-semibold">
+                    40.000 <span class="text-neutral text-sm font-normal">FCFA/jour</span>
+                  </div>
+                </div>
+                <p class="text-sm text-neutral mb-4">Berline • 5 places</p>
+                
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-gas-pump text-primary mr-2"></i>
+                    <span>Essence</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-cog text-primary mr-2"></i>
+                    <span>Automatique</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-snowflake text-primary mr-2"></i>
+                    <span>Climatisation</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-suitcase text-primary mr-2"></i>
+                    <span>3 valises</span>
+                  </div>
+                </div>
+                
+                <div class="flex space-x-2 mb-6">
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">Bluetooth</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">Cuir</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">USB</span>
+                </div>
+                
+                <div class="flex space-x-2">
+                  <a
+                    href="#contact"
+                    class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-all duration-300 text-center flex-1"
+                  >
+                    Réserver
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-gray-200 text-secondary font-medium py-2 px-4 rounded-md transition-all duration-300 text-center"
+                  >
+                    Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle 3: Compact -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 car-card">
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                  alt="Citadine Renault Clio"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+                <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  Économique
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="heading text-xl font-bold text-secondary">
+                    Renault Clio
+                  </h3>
+                  <div class="text-primary font-semibold">
+                    25.000 <span class="text-neutral text-sm font-normal">FCFA/jour</span>
+                  </div>
+                </div>
+                <p class="text-sm text-neutral mb-4">Citadine • 5 places</p>
+                
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-gas-pump text-primary mr-2"></i>
+                    <span>Essence</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-cog text-primary mr-2"></i>
+                    <span>Manuelle</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-snowflake text-primary mr-2"></i>
+                    <span>Climatisation</span>
+                  </div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas fa-suitcase text-primary mr-2"></i>
+                    <span>2 valises</span>
+                  </div>
+                </div>
+                
+                <div class="flex space-x-2 mb-6">
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">Économique</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">Bluetooth</span>
+                  <span class="bg-primary/10 text-xs text-primary px-2.5 py-1 rounded-full">USB</span>
+                </div>
+                
+                <div class="flex space-x-2">
+                  <a
+                    href="#contact"
+                    class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition-all duration-300 text-center flex-1"
+                  >
+                    Réserver
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-gray-200 text-secondary font-medium py-2 px-4 rounded-md transition-all duration-300 text-center"
+                  >
+                    Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <a
+              href="#contact"
+              class="inline-flex items-center bg-primary hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-all duration-300"
+            >
+              <span>Voir toute notre flotte</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Services Section -->
+      <section id="services" class="py-20 bg-light">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <span
+              class="text-primary font-medium text-sm uppercase tracking-wider"
+              >Nos services</span
+            >
+            <h2
+              class="heading text-3xl lg:text-4xl font-bold text-secondary mt-2 mb-6"
+            >
+              Des Services Adaptés à Vos Besoins
+            </h2>
+            <div class="w-20 h-1 bg-primary mx-auto mb-5"></div>
+            <p class="text-neutral max-w-3xl mx-auto">
+              Chez RentyxCar, nous vous proposons bien plus que de simples véhicules. Découvrez 
+              nos services premium pour rendre votre expérience de location inoubliable.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Service 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                <i class="fas fa-map-marked-alt text-primary text-2xl"></i>
+              </div>
+              <h3 class="heading text-xl font-bold text-secondary mb-4">
+                Livraison & Reprise
+              </h3>
+              <p class="text-neutral mb-4">
+                Nous livrons votre véhicule à l'adresse de votre choix à Abidjan 
+                (aéroport, hôtel, domicile) et le récupérons en fin de location.
+              </p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Livraison à l'aéroport 24/7</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Service de voiturier</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Reprise au lieu de votre choix</span>
+                </li>
+              </ul>
+              <a href="#contact" class="text-primary hover:text-red-700 font-medium flex items-center">
+                <span>En savoir plus</span>
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                <i class="fas fa-user-tie text-primary text-2xl"></i>
+              </div>
+              <h3 class="heading text-xl font-bold text-secondary mb-4">
+                Location avec Chauffeur
+              </h3>
+              <p class="text-neutral mb-4">
+                Profitez d'un chauffeur professionnel qui connaît parfaitement les routes 
+                ivoiriennes pour tous vos déplacements en toute sécurité.
+              </p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Chauffeurs professionnels</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Disponible 24h/24</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Transferts aéroport et longue distance</span>
+                </li>
+              </ul>
+              <a href="#contact" class="text-primary hover:text-red-700 font-medium flex items-center">
+                <span>En savoir plus</span>
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                <i class="fas fa-tools text-primary text-2xl"></i>
+              </div>
+              <h3 class="heading text-xl font-bold text-secondary mb-4">
+                Assistance 24/7
+              </h3>
+              <p class="text-neutral mb-4">
+                Notre service d'assistance est disponible 24h/24 et 7j/7 pour vous aider 
+                en cas de panne ou d'accident partout en Côte d'Ivoire.
+              </p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Dépannage rapide</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Véhicule de remplacement</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <i class="fas fa-check text-primary mr-2"></i>
+                  <span>Support téléphonique permanent</span>
+                </li>
+              </ul>
+              <a href="#contact" class="text-primary hover:text-red-700 font-medium flex items-center">
+                <span>En savoir plus</span>
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Additional Services -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                  <i class="fas fa-route text-primary"></i>
+                </div>
+                <h3 class="heading text-lg font-bold text-secondary">
+                  Location Longue Durée
+                </h3>
+              </div>
+              <p class="text-neutral mb-3">
+                Solutions flexibles pour les entreprises et expatriés avec des contrats 
+                mensuels ou annuels à tarifs préférentiels.
+              </p>
+              <a href="#contact" class="text-primary hover:text-red-700 text-sm font-medium flex items-center">
+                <span>Demander un devis</span>
+                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+              </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <div class="flex items-center mb-4">
+                <div class="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mr-4">
+                  <i class="fas fa-car-crash text-primary"></i>
+                </div>
+                <h3 class="heading text-lg font-bold text-secondary">
+                  Assurance All-Risk
+                </h3>
+              </div>
+              <p class="text-neutral mb-3">
+                Options d'assurances complètes pour une tranquillité totale pendant 
+                votre location en Côte d'Ivoire.
+              </p>
+              <a href="#contact" class="text-primary hover:text-red-700 text-sm font-medium flex items-center">
+                <span>En savoir plus</span>
+                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- About Section -->
+      <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <span
+              class="text-primary font-medium text-sm uppercase tracking-wider"
+              >À propos</span
+            >
+            <h2
+              class="heading text-3xl lg:text-4xl font-bold text-secondary mt-2 mb-6"
+            >
+              Découvrez RentyxCar
+            </h2>
+            <div class="w-20 h-1 bg-primary mx-auto mb-5"></div>
+            <p class="text-neutral max-w-3xl mx-auto">
+              Depuis plus de 10 ans, nous sommes le leader de la location de véhicules en Côte d'Ivoire, 
+              proposant des solutions de mobilité adaptées à tous vos besoins.
+            </p>
+          </div>
+
+          <!-- Main Content -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-16">
+            <!-- Left Column: Text Content -->
+            <div>
+              <div class="mb-8">
+                <h3 class="heading text-2xl font-bold text-secondary mb-4">Notre Histoire</h3>
+                <p class="text-neutral mb-4">
+                  Fondée en 2012 à Abidjan, RentyxCar est née de la vision d'entrepreneurs ivoiriens 
+                  passionnés par l'automobile et le service client. Notre objectif : révolutionner 
+                  l'expérience de location de véhicules en Côte d'Ivoire.
+                </p>
+                <p class="text-neutral">
+                  Aujourd'hui, avec plus de 50 véhicules dans notre flotte et 5 agences à travers le pays, 
+                  nous sommes fiers d'être le partenaire de confiance de milliers de clients, 
+                  qu'ils soient touristes, expatriés ou entreprises locales.
+                </p>
+              </div>
+
               <div>
-                <h4 class="font-bold text-dark">Jean Kouassi</h4>
-                <div class="flex text-accent">
+                <h3 class="heading text-2xl font-bold text-secondary mb-4">Notre Mission</h3>
+                <p class="text-neutral mb-4">
+                  Chez RentyxCar, notre mission est de vous offrir une expérience de mobilité sans 
+                  faille, combinant qualité des véhicules, excellence du service et tarifs transparents.
+                </p>
+                <p class="text-neutral">
+                  Nous nous engageons à faciliter vos déplacements en Côte d'Ivoire, qu'il s'agisse 
+                  d'un séjour touristique, d'une mission professionnelle ou d'un besoin ponctuel de mobilité.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Column: Values & Stats -->
+            <div class="bg-light p-8 rounded-lg shadow-lg">
+              <!-- Values -->
+              <h3 class="heading text-2xl font-bold text-secondary mb-6">Nos Valeurs</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-full min-w-12 h-12 flex items-center justify-center mr-4">
+                    <i class="fas fa-award text-primary text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-secondary mb-2">Excellence</h4>
+                    <p class="text-sm text-neutral">Nous visons l'excellence dans chaque aspect de notre service.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-full min-w-12 h-12 flex items-center justify-center mr-4">
+                    <i class="fas fa-shield-alt text-primary text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-secondary mb-2">Fiabilité</h4>
+                    <p class="text-sm text-neutral">Des véhicules entretenus et un service sur lequel vous pouvez compter.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-full min-w-12 h-12 flex items-center justify-center mr-4">
+                    <i class="fas fa-handshake text-primary text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-secondary mb-2">Intégrité</h4>
+                    <p class="text-sm text-neutral">Transparence totale dans nos tarifs et nos conditions.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-full min-w-12 h-12 flex items-center justify-center mr-4">
+                    <i class="fas fa-heart text-primary text-xl"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-secondary mb-2">Passion</h4>
+                    <p class="text-sm text-neutral">Notre passion pour l'automobile et le service client guide nos actions.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Stats -->
+              <h3 class="heading text-2xl font-bold text-secondary mb-6">RentyxCar en Chiffres</h3>
+              <div class="grid grid-cols-2 gap-6">
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary mb-2">10+</div>
+                  <p class="text-sm text-neutral">Années d'expérience</p>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary mb-2">50+</div>
+                  <p class="text-sm text-neutral">Véhicules dans notre flotte</p>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary mb-2">5</div>
+                  <p class="text-sm text-neutral">Agences en Côte d'Ivoire</p>
+                </div>
+                <div class="text-center">
+                  <div class="text-4xl font-bold text-primary mb-2">5000+</div>
+                  <p class="text-sm text-neutral">Clients satisfaits</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Team Section -->
+          <div class="max-w-5xl mx-auto">
+            <h3 class="heading text-2xl font-bold text-secondary text-center mb-10">Notre Équipe de Direction</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Team Member 1 -->
+              <div class="text-center">
+                <div class="bg-primary/10 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                  <i class="fas fa-user text-primary text-3xl"></i>
+                </div>
+                <h4 class="font-bold text-secondary text-lg mb-1">Thomas Dubois</h4>
+                <p class="text-primary font-medium text-sm mb-2">Directeur Général</p>
+                <p class="text-neutral text-sm">15 ans d'expérience dans l'industrie automobile, Thomas dirige RentyxCar avec passion et vision.</p>
+              </div>
+              
+              <!-- Team Member 2 -->
+              <div class="text-center">
+                <div class="bg-primary/10 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                  <i class="fas fa-user text-primary text-3xl"></i>
+                </div>
+                <h4 class="font-bold text-secondary text-lg mb-1">Isabelle Laurent</h4>
+                <p class="text-primary font-medium text-sm mb-2">Directrice des Opérations</p>
+                <p class="text-neutral text-sm">Experte en logistique, Isabelle assure l'excellence opérationnelle de notre flotte et de nos services.</p>
+              </div>
+              
+              <!-- Team Member 3 -->
+              <div class="text-center">
+                <div class="bg-primary/10 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                  <i class="fas fa-user text-primary text-3xl"></i>
+                </div>
+                <h4 class="font-bold text-secondary text-lg mb-1">Michel Renard</h4>
+                <p class="text-primary font-medium text-sm mb-2">Directeur Commercial</p>
+                <p class="text-neutral text-sm">Avec son expertise en développement commercial, Michel a contribué à l'expansion de RentyxCar dans tout le pays.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA -->
+          <div class="text-center mt-16">
+            <a
+              href="#contact"
+              class="inline-flex items-center bg-primary hover:bg-red-700 text-white font-medium py-3 px-8 rounded-md transition-all duration-300"
+            >
+              <span>Contactez notre équipe</span>
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="py-20 bg-secondary">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <span
+              class="text-primary font-medium text-sm uppercase tracking-wider"
+              >Témoignages</span
+            >
+            <h2
+              class="heading text-3xl lg:text-4xl font-bold text-white mt-2 mb-6"
+            >
+              Ce que nos clients disent
+            </h2>
+            <div class="w-20 h-1 bg-primary mx-auto mb-5"></div>
+            <p class="text-gray-300 max-w-3xl mx-auto">
+              Découvrez l'expérience vécue par nos clients qui ont fait confiance 
+              à RentyxCar pour leurs déplacements en Côte d'Ivoire.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg relative">
+              <div class="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fas fa-quote-right text-white"></i>
+                </div>
+              </div>
+              <div class="flex flex-col items-center pt-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-full h-full object-cover">
+                </div>
+                <div class="flex text-amber-400 mb-4">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </div>
+                <p class="text-center text-neutral mb-6">
+                  "Service exceptionnel ! J'ai loué un SUV pour explorer l'intérieur du pays, 
+                  et tout était parfait. La livraison à mon hôtel était ponctuelle et 
+                  le véhicule en parfait état."
+                </p>
+                <h4 class="text-secondary font-bold">Pierre Dupont</h4>
+                <p class="text-sm text-gray-500">Entrepreneur, France</p>
               </div>
             </div>
-            <p class="text-gray-600">
-              "Excellent service de RentyxCar. La voiture était propre, bien
-              entretenue et exactement comme décrite. La prise en charge et la
-              restitution se sont déroulées sans problème. Je les utiliserai
-              certainement à nouveau !"
-            </p>
-          </div>
 
-          <div class="testimonial-card bg-white p-6 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
-                  alt="Client"
-                  class="w-full h-full object-cover"
-                />
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg relative">
+              <div class="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fas fa-quote-right text-white"></i>
+                </div>
               </div>
-              <div>
-                <h4 class="font-bold text-dark">Amina Traoré</h4>
-                <div class="flex text-accent">
+              <div class="flex flex-col items-center pt-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-full h-full object-cover">
+                </div>
+                <div class="flex text-amber-400 mb-4">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </div>
+                <p class="text-center text-neutral mb-6">
+                  "L'option chauffeur a rendu notre séjour à Abidjan tellement plus simple ! 
+                  Notre chauffeur connaissait tous les meilleurs endroits et nous a évité 
+                  le stress de la circulation. Je recommande vivement !"
+                </p>
+                <h4 class="text-secondary font-bold">Sophie Mercier</h4>
+                <p class="text-sm text-gray-500">Consultante, France</p>
               </div>
             </div>
-            <p class="text-gray-600">
-              "J'ai loué une voiture pendant une semaine lors de mon voyage
-              d'affaires à Abidjan. Le processus était très professionnel et les
-              tarifs étaient compétitifs. La voiture correspondait parfaitement
-              à mes besoins."
-            </p>
-          </div>
 
-          <div class="testimonial-card bg-white p-6 rounded-xl shadow-md">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                <img
-                  src="https://randomuser.me/api/portraits/men/75.jpg"
-                  alt="Client"
-                  class="w-full h-full object-cover"
-                />
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg relative">
+              <div class="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fas fa-quote-right text-white"></i>
+                </div>
               </div>
-              <div>
-                <h4 class="font-bold text-dark">David Johnson</h4>
-                <div class="flex text-accent">
+              <div class="flex flex-col items-center pt-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4">
+                  <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-full h-full object-cover">
+                </div>
+                <div class="flex text-amber-400 mb-4">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                 </div>
+                <p class="text-center text-neutral mb-6">
+                  "Notre entreprise utilise les services de RentyxCar depuis 2 ans pour nos 
+                  collaborateurs. Le service est fiable, les véhicules toujours propres et 
+                  l'équipe très réactive. Un partenaire de confiance."
+                </p>
+                <h4 class="text-secondary font-bold">Jean-Claude Petit</h4>
+                <p class="text-sm text-gray-500">Directeur, Entreprise Française</p>
               </div>
             </div>
-            <p class="text-gray-600">
-              "En tant que touriste visitant la Côte d'Ivoire, j'ai été
-              impressionné par le service. Ils m'ont aidé avec toutes les
-              formalités et m'ont fourni d'excellentes recommandations pour mon
-              voyage."
+          </div>
+        </div>
+      </section>
+      
+      <!-- Contact & Reservation Section -->
+      <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <span
+              class="text-primary font-medium text-sm uppercase tracking-wider"
+              >Contactez-nous</span
+            >
+            <h2
+              class="heading text-3xl lg:text-4xl font-bold text-secondary mt-2 mb-6"
+            >
+              Réservez votre véhicule
+            </h2>
+            <div class="w-20 h-1 bg-primary mx-auto mb-5"></div>
+            <p class="text-neutral max-w-3xl mx-auto">
+              Contactez-nous pour réserver votre véhicule ou pour obtenir plus d'informations 
+              sur nos services de location en Côte d'Ivoire.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Map and Contact -->
-    <section id="contact" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h2 class="text-3xl font-bold text-dark mb-6">Notre Emplacement</h2>
-            <div class="bg-gray-200 h-96 rounded-xl overflow-hidden">
-              <!-- Map placeholder - in a real implementation you would embed Google Maps -->
-              <div
-                class="w-full h-full flex items-center justify-center bg-primary bg-opacity-10 text-dark"
-              >
-                <i class="fas fa-map-marked-alt text-5xl mr-4 text-primary"></i>
-                <span class="text-xl font-bold"
-                  >Carte de Notre Emplacement</span
-                >
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Contact Info -->
+            <div class="lg:col-span-1 flex flex-col">
+              <div class="bg-secondary p-8 rounded-lg shadow-lg h-full">
+                <h3 class="text-xl font-bold text-white mb-8">Informations de contact</h3>
+                
+                <div class="flex items-start mb-6">
+                  <div class="bg-primary p-3 rounded-lg mr-4">
+                    <i class="fas fa-map-marker-alt text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Adresse</h4>
+                    <p class="text-gray-300">123 Boulevard Lagunaire, Abidjan, Côte d'Ivoire</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start mb-6">
+                  <div class="bg-primary p-3 rounded-lg mr-4">
+                    <i class="fas fa-phone-alt text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Téléphone</h4>
+                    <p class="text-gray-300">+225 05 75 75 75 75</p>
+                    <p class="text-gray-300">+225 07 07 07 07 07</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start mb-6">
+                  <div class="bg-primary p-3 rounded-lg mr-4">
+                    <i class="fas fa-envelope text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Email</h4>
+                    <p class="text-gray-300">info@rentyxcar.ci</p>
+                    <p class="text-gray-300">reservation@rentyxcar.ci</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-primary p-3 rounded-lg mr-4">
+                    <i class="fas fa-clock text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Heures d'ouverture</h4>
+                    <p class="text-gray-300">Lundi - Samedi: 8h - 19h</p>
+                    <p class="text-gray-300">Dimanche: 9h - 13h</p>
+                    <p class="text-primary mt-2 font-medium">Support 24/7 pour les clients</p>
+                  </div>
+                </div>
+                
+                <div class="mt-8 flex gap-4">
+                  <a href="#" class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                    <i class="fab fa-facebook-f text-white"></i>
+                  </a>
+                  <a href="#" class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                    <i class="fab fa-instagram text-white"></i>
+                  </a>
+                  <a href="#" class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                    <i class="fab fa-whatsapp text-white"></i>
+                  </a>
+                  <a href="#" class="bg-white/20 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                    <i class="fab fa-twitter text-white"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Reservation Form -->
+            <div class="lg:col-span-2">
+              <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
+                <h3 class="text-xl font-bold text-secondary mb-8">Formulaire de réservation</h3>
+                
+                <form action="#" method="POST" class="space-y-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="name" class="block text-neutral font-medium mb-2">Nom complet</label>
+                      <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom" required>
+                    </div>
+                    <div>
+                      <label for="email" class="block text-neutral font-medium mb-2">Email</label>
+                      <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre email" required>
+                    </div>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="phone" class="block text-neutral font-medium mb-2">Téléphone</label>
+                      <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre téléphone" required>
+                    </div>
+                    <div>
+                      <label for="vehicle" class="block text-neutral font-medium mb-2">Type de véhicule</label>
+                      <select id="vehicle" name="vehicle" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        <option value="">Sélectionnez un véhicule</option>
+                        <option value="economy">Économique</option>
+                        <option value="compact">Compact</option>
+                        <option value="sedan">Berline</option>
+                        <option value="suv">SUV</option>
+                        <option value="luxury">Luxe</option>
+                        <option value="minibus">Minibus</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="pickup-date" class="block text-neutral font-medium mb-2">Date de prise en charge</label>
+                      <input type="date" id="pickup-date" name="pickup-date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    <div>
+                      <label for="return-date" class="block text-neutral font-medium mb-2">Date de retour</label>
+                      <input type="date" id="return-date" name="return-date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label for="location" class="block text-neutral font-medium mb-2">Lieu de prise en charge</label>
+                    <input type="text" id="location" name="location" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Adresse, hôtel ou aéroport" required>
+                  </div>
+                  
+                  <div>
+                    <label for="message" class="block text-neutral font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Informations supplémentaires"></textarea>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <input type="checkbox" id="terms" name="terms" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary" required>
+                    <label for="terms" class="ml-2 text-sm text-neutral">J'accepte les conditions générales et la politique de confidentialité</label>
+                  </div>
+                  
+                  <div class="flex space-x-2">
+                    <button
+                      type="submit"
+                      class="w-full bg-primary hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                    >
+                      Réserver maintenant
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-
-          <div>
-            <h2 class="text-3xl font-bold text-dark mb-6">Contactez-Nous</h2>
-            <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-              <div class="mb-6">
-                <h3 class="text-xl font-bold text-dark mb-2">Siège Social</h3>
-                <p class="text-gray-600 flex items-center">
-                  <i class="fas fa-map-marker-alt text-primary mr-3"></i>
-                  <span
-                    >123 Avenue Jean-Paul II, Plateau, Abidjan, Côte
-                    d'Ivoire</span
-                  >
-                </p>
-              </div>
-
-              <div class="mb-6">
-                <h3 class="text-xl font-bold text-dark mb-2">
-                  Informations de Contact
-                </h3>
-                <p class="text-gray-600 flex items-center mb-2">
-                  <i class="fas fa-phone-alt text-primary mr-3"></i>
-                  <span>+225 01 23 45 67 89</span>
-                </p>
-                <p class="text-gray-600 flex items-center">
-                  <i class="fas fa-envelope text-primary mr-3"></i>
-                  <span>contact@rentyxcar.com</span>
-                </p>
-              </div>
-
-              <div>
-                <h3 class="text-xl font-bold text-dark mb-2">
-                  Heures d'Ouverture
-                </h3>
-                <p class="text-gray-600 mb-1">
-                  Lundi - Vendredi : 8h00 - 19h00
-                </p>
-                <p class="text-gray-600 mb-1">Samedi : 9h00 - 17h00</p>
-                <p class="text-gray-600">Dimanche : 10h00 - 15h00</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-dark mb-4">Foire Aux Questions</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            Trouvez les réponses aux questions fréquentes sur nos services de
-            location de voitures.
-          </p>
-        </div>
-
-        <div class="max-w-3xl mx-auto">
-          <div class="mb-4 border border-gray-200 rounded-xl overflow-hidden">
-            <button
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-gray-50 transition duration-300"
-            >
-              <span class="text-lg font-medium text-dark"
-                >Quels documents sont nécessaires pour louer une voiture ?</span
-              >
-              <i class="fas fa-chevron-down text-primary"></i>
-            </button>
-            <div class="px-6 pb-6 pt-2 bg-white hidden">
-              <p class="text-gray-600">
-                Vous aurez besoin d'un permis de conduire valide, d'une carte de
-                crédit à votre nom pour la caution, et d'une pièce d'identité
-                (passeport ou carte nationale d'identité). Les locataires
-                internationaux peuvent avoir besoin d'un Permis de Conduire
-                International.
-              </p>
-            </div>
-          </div>
-
-          <div class="mb-4 border border-gray-200 rounded-xl overflow-hidden">
-            <button
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-gray-50 transition duration-300"
-            >
-              <span class="text-lg font-medium text-dark"
-                >Quel est l'âge minimum pour louer une voiture ?</span
-              >
-              <i class="fas fa-chevron-down text-primary"></i>
-            </button>
-            <div class="px-6 pb-6 pt-2 bg-white hidden">
-              <p class="text-gray-600">
-                L'âge minimum pour louer une voiture chez RentyxCar est de 21
-                ans. Pour certaines catégories de véhicules, l'âge minimum peut
-                être plus élevé. Les conducteurs de moins de 25 ans peuvent être
-                soumis à des frais supplémentaires pour jeune conducteur.
-              </p>
-            </div>
-          </div>
-
-          <div class="mb-4 border border-gray-200 rounded-xl overflow-hidden">
-            <button
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-gray-50 transition duration-300"
-            >
-              <span class="text-lg font-medium text-dark"
-                >Puis-je prolonger ma période de location ?</span
-              >
-              <i class="fas fa-chevron-down text-primary"></i>
-            </button>
-            <div class="px-6 pb-6 pt-2 bg-white hidden">
-              <p class="text-gray-600">
-                Oui, vous pouvez prolonger votre période de location, sous
-                réserve de disponibilité du véhicule. Veuillez nous contacter au
-                moins 24 heures avant l'heure de retour prévue pour organiser
-                une prolongation. Des frais supplémentaires s'appliqueront.
-              </p>
-            </div>
-          </div>
-
-          <div class="mb-4 border border-gray-200 rounded-xl overflow-hidden">
-            <button
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-gray-50 transition duration-300"
-            >
-              <span class="text-lg font-medium text-dark"
-                >Que se passe-t-il si je rends la voiture en retard ?</span
-              >
-              <i class="fas fa-chevron-down text-primary"></i>
-            </button>
-            <div class="px-6 pb-6 pt-2 bg-white hidden">
-              <p class="text-gray-600">
-                Les retours tardifs peuvent être soumis à des frais
-                supplémentaires. Nous accordons un délai de grâce de 29 minutes.
-                Après cela, vous serez facturé pour une journée complète
-                supplémentaire. Veuillez nous contacter si vous prévoyez d'être
-                en retard pour éviter des frais supplémentaires.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="py-16 bg-dark text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">Restez Informé</h2>
-        <p class="text-light max-w-2xl mx-auto mb-8">
-          Abonnez-vous à notre newsletter pour recevoir des offres spéciales,
-          des informations sur les nouveaux véhicules et des conseils de voyage
-          à Abidjan.
-        </p>
-
-        <form class="max-w-md mx-auto flex">
-          <input
-            type="email"
-            placeholder="Votre adresse email"
-            class="flex-grow p-3 rounded-l-lg focus:outline-none text-gray-900"
-          />
-          <button
-            class="bg-accent hover:bg-yellow-600 text-dark font-bold py-3 px-6 rounded-r-lg transition duration-300"
-          >
-            S'abonner
-          </button>
-        </form>
-      </div>
-    </section>
+      </section>
+      
+      <!-- Map Section -->
+      <section id="map" class="h-96">
+        <!-- Google Maps iframe d'Abidjan -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127276.60323292495!2d-4.052935307937642!3d5.348411591905051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ea5311959121%3A0x3fe70ddce19221a6!2sAbidjan%2C%20C%C3%B4te%20d&#39;Ivoire!5e0!3m2!1sfr!2s!4v1635350121000!5m2!1sfr!2s" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-12">
+    <footer class="bg-secondary text-white pt-16 pb-8">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <!-- Logo and About -->
           <div>
-            <div class="flex items-center mb-4">
-              <img
-                src="https://via.placeholder.com/40"
-                alt="RentyxCar Logo"
-                class="h-8 mr-2"
-              />
-              <span class="text-xl font-bold"
-                >Rentyx<span class="text-accent">Car</span></span
+            <a href="#home" class="inline-block mb-6">
+              <span class="text-2xl font-semibold text-white"
+                >Rentyx<span class="text-primary">Car</span></span
               >
-            </div>
-            <p class="text-light mb-4">
-              Services de location de voitures premium à Abidjan, offrant des
-              véhicules de qualité et un service client exceptionnel.
+            </a>
+            <p class="text-gray-300 mb-6">
+              Votre partenaire de confiance pour la location de véhicules en Côte d'Ivoire.
+              Des solutions adaptées pour tous vos déplacements professionnels et touristiques.
             </p>
             <div class="flex space-x-4">
-              <a
-                href="#"
-                class="text-light hover:text-accent transition duration-300"
-              >
-                <i class="fab fa-facebook-f"></i>
+              <a href="#" class="bg-white/10 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                <i class="fab fa-facebook-f text-white"></i>
               </a>
-              <a
-                href="#"
-                class="text-light hover:text-accent transition duration-300"
-              >
-                <i class="fab fa-twitter"></i>
+              <a href="#" class="bg-white/10 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                <i class="fab fa-instagram text-white"></i>
               </a>
-              <a
-                href="#"
-                class="text-light hover:text-accent transition duration-300"
-              >
-                <i class="fab fa-instagram"></i>
+              <a href="#" class="bg-white/10 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                <i class="fab fa-twitter text-white"></i>
               </a>
-              <a
-                href="#"
-                class="text-light hover:text-accent transition duration-300"
-              >
-                <i class="fab fa-linkedin-in"></i>
+              <a href="#" class="bg-white/10 rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors">
+                <i class="fab fa-linkedin-in text-white"></i>
               </a>
             </div>
           </div>
 
+          <!-- Quick Links -->
           <div>
-            <h3 class="text-lg font-bold mb-4">Liens Rapides</h3>
-            <ul class="space-y-2">
+            <h4 class="text-lg font-bold mb-6 text-white">Liens Rapides</h4>
+            <ul class="space-y-3">
               <li>
-                <a
-                  href="#home"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Accueil</a
-                >
+                <a href="#home" class="text-gray-300 hover:text-primary transition-colors">Accueil</a>
               </li>
               <li>
-                <a
-                  href="#vehicles"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Notre Flotte</a
-                >
+                <a href="#vehicles" class="text-gray-300 hover:text-primary transition-colors">Nos Véhicules</a>
               </li>
               <li>
-                <a
-                  href="#services"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Services</a
-                >
+                <a href="#services" class="text-gray-300 hover:text-primary transition-colors">Services</a>
               </li>
               <li>
-                <a
-                  href="#testimonials"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Témoignages</a
-                >
+                <a href="#about" class="text-gray-300 hover:text-primary transition-colors">À Propos</a>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Contact</a
-                >
+                <a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors">Conditions Générales</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-primary transition-colors">Politique de Confidentialité</a>
               </li>
             </ul>
           </div>
 
+          <!-- Contact Info -->
           <div>
-            <h3 class="text-lg font-bold mb-4">Services</h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Location Court Terme</a
-                >
+            <h4 class="text-lg font-bold mb-6 text-white">Contactez-nous</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                <span class="text-gray-300">123 Boulevard Lagunaire, Abidjan, Côte d'Ivoire</span>
               </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Location Long Terme</a
-                >
+              <li class="flex items-start">
+                <i class="fas fa-phone-alt text-primary mt-1 mr-3"></i>
+                <div>
+                  <p class="text-gray-300">+225 05 75 75 75 75</p>
+                  <p class="text-gray-300">+225 07 07 07 07 07</p>
+                </div>
               </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Prise en Charge à l'Aéroport</a
-                >
+              <li class="flex items-start">
+                <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                <div>
+                  <p class="text-gray-300">info@rentyxcar.ci</p>
+                  <p class="text-gray-300">reservation@rentyxcar.ci</p>
+                </div>
               </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Location Entreprise</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-light hover:text-accent transition duration-300"
-                  >Service Chauffeur</a
-                >
+              <li class="flex items-start">
+                <i class="fas fa-clock text-primary mt-1 mr-3"></i>
+                <div>
+                  <p class="text-gray-300">Lun - Sam: 8h - 19h</p>
+                  <p class="text-gray-300">Dim: 9h - 13h</p>
+                </div>
               </li>
             </ul>
           </div>
 
+          <!-- Newsletter -->
           <div>
-            <h3 class="text-lg font-bold mb-4">Informations de Contact</h3>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <i class="fas fa-map-marker-alt text-light mr-3"></i>
-                <span class="text-light">123 Avenue Jean-Paul II, Abidjan</span>
-              </li>
-              <li class="flex items-center">
-                <i class="fas fa-phone-alt text-light mr-3"></i>
-                <span class="text-light">+225 01 23 45 67 89</span>
-              </li>
-              <li class="flex items-center">
-                <i class="fas fa-envelope text-light mr-3"></i>
-                <span class="text-light">contact@rentyxcar.com</span>
-              </li>
-            </ul>
+            <h4 class="text-lg font-bold mb-6 text-white">Newsletter</h4>
+            <p class="text-gray-300 mb-4">
+              Inscrivez-vous à notre newsletter pour recevoir nos offres spéciales et actualités.
+            </p>
+            <form action="#" method="POST" class="mb-4">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  class="bg-white/10 text-white placeholder-gray-400 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex-grow"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="bg-primary hover:bg-red-700 text-white font-medium px-4 py-3 rounded-md transition-colors whitespace-nowrap"
+                >
+                  S'inscrire
+                </button>
+              </div>
+            </form>
+            <p class="text-xs text-gray-400">
+              En vous inscrivant, vous acceptez de recevoir nos communications commerciales et confirmez avoir lu notre politique de confidentialité.
+            </p>
           </div>
         </div>
 
-        <div class="pt-8 border-t border-secondary text-center text-light">
-          <p>
-            &copy; 2023 RentyxCar. Tous droits réservés. |
-            <a href="#" class="hover:text-accent transition duration-300"
-              >Politique de Confidentialité</a
-            >
-            |
-            <a href="#" class="hover:text-accent transition duration-300"
-              >Conditions d'Utilisation</a
-            >
-          </p>
+        <!-- Divider -->
+        <div class="border-t border-white/10 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; 2023 RentyxCar. Tous droits réservés.
+            </p>
+            <div class="flex items-center space-x-6">
+              <i class="fab fa-cc-visa text-white text-2xl opacity-70 hover:opacity-100 transition-opacity"></i>
+              <i class="fab fa-cc-mastercard text-white text-2xl opacity-70 hover:opacity-100 transition-opacity"></i>
+              <i class="fab fa-cc-amex text-white text-2xl opacity-70 hover:opacity-100 transition-opacity"></i>
+              <i class="fas fa-money-bill-wave text-white text-2xl opacity-70 hover:opacity-100 transition-opacity" title="Orange Money"></i>
+              <i class="fas fa-mobile-alt text-white text-2xl opacity-70 hover:opacity-100 transition-opacity" title="Mobile Money"></i>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
 
     <script>
-      // FAQ Accordion
-      const faqButtons = document.querySelectorAll('.rounded-xl button')
-      faqButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const answer = button.nextElementSibling
-          answer.classList.toggle('hidden')
-
-          const icon = button.querySelector('i')
-          if (answer.classList.contains('hidden')) {
-            icon.classList.remove('fa-chevron-up')
-            icon.classList.add('fa-chevron-down')
-          } else {
-            icon.classList.remove('fa-chevron-down')
-            icon.classList.add('fa-chevron-up')
-          }
-        })
-      })
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault()
-
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth',
-          })
-
-          // Update active navigation
-          document.querySelectorAll('.nav-link').forEach((link) => {
-            link.classList.remove('active-nav')
-          })
-          this.classList.add('active-nav')
-
-          // Close mobile menu if it's open
-          if (window.innerWidth < 768) {
-            mobileMenu.style.maxHeight = '0'
-            menuOpen = false
-          }
-        })
-      })
-
       // Mobile menu toggle
-      const mobileMenuButton = document.getElementById('mobile-menu-button')
-      const mobileMenu = document.getElementById('mobile-menu')
-      let menuOpen = false
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn')
+      const mobileMenu = document.getElementById('mobileMenu')
 
-      mobileMenuButton.addEventListener('click', function () {
-        if (menuOpen) {
-          mobileMenu.style.maxHeight = '0'
-          menuOpen = false
+      function toggleMobileMenu() {
+        if (mobileMenu.classList.contains('hidden')) {
+          // Open menu
+          mobileMenu.classList.remove('hidden')
+          mobileMenu.classList.add('block')
+          mobileMenuBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>'
         } else {
-          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px'
-          menuOpen = true
+          // Close menu
+          mobileMenu.classList.add('hidden')
+          mobileMenu.classList.remove('block')
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>'
         }
-      })
+      }
 
-      // Adjust menu on window resize
-      window.addEventListener('resize', function () {
-        if (window.innerWidth >= 768) {
-          mobileMenu.style.maxHeight = '0'
-          menuOpen = false
-        }
-      })
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu)
     </script>
   </body>
-</html>
+</html> 
