@@ -78,6 +78,10 @@
       <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/04/22/09/20250422094150-ENEN038B.js"></script>
 
+    <script>
+      window.botpress.open()
+    </script>
+    
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
       <div class="container mx-auto px-4 py-4">
@@ -1288,26 +1292,6 @@
       </div>
     </footer>
 
-    <script>
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn')
-      const mobileMenu = document.getElementById('mobileMenu')
-
-      function toggleMobileMenu() {
-        if (mobileMenu.classList.contains('hidden')) {
-          // Open menu
-          mobileMenu.classList.remove('hidden')
-          mobileMenu.classList.add('block')
-          mobileMenuBtn.innerHTML = '<i class="fas fa-times text-2xl"></i>'
-        } else {
-          // Close menu
-          mobileMenu.classList.add('hidden')
-          mobileMenu.classList.remove('block')
-          mobileMenuBtn.innerHTML = '<i class="fas fa-bars text-2xl"></i>'
-        }
-      }
-
-      mobileMenuBtn.addEventListener('click', toggleMobileMenu)
-    </script>
+    
   </body>
 </html> 
